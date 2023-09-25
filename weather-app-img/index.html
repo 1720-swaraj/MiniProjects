@@ -48,6 +48,7 @@
 
       const serachBox = document.querySelector(".search input");
       const serachBtn = document.querySelector(".search button");
+      const wetherIco = document.querySelector(".wether-icon")
 
       async function checkWether(city) {
         const response = await fetch(
@@ -62,6 +63,18 @@
         document.querySelector(".humidity").innerHTML =
           data.main.humidity + "%";
         document.querySelector(".wind").innerHTML = data.wind.speed + " km/hr";
+
+        if(data.weather[0].main == "Clouds"){
+             wetherIco.src = "images/clouds.png"   
+        }else if(data.weather[0].main == "Clear"){
+            wetherIco.src= "images/clear.png"
+        }else if(data.weather[0].main == "Rain"){
+            wetherIco.src = "images/rain.png"
+        }else if(data.weather[0].main == "Drizzle"){
+            wetherIco.src = "images/drizzle.png"
+        }else if(data.weather[0].main == "Mist"){
+            wetherIco.src = "images/mist.png"
+        }
       }
 
       serachBtn.addEventListener("click", () => {
